@@ -1,0 +1,19 @@
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# macOS / Linux / Windows noise
+.DS_Store
+Thumbs.db

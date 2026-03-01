@@ -1,0 +1,113 @@
+{
+  "summary": {
+    "total_tests": 17,
+    "passed": 17,
+    "failed": 0,
+    "success_rate": 100.0
+  },
+  "results": [
+    {
+      "test": "Patient Registration",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:24.353816"
+    },
+    {
+      "test": "Doctor Registration",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:24.615118"
+    },
+    {
+      "test": "Patient Login",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:24.890550"
+    },
+    {
+      "test": "Get Patient Profile",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:24.968180"
+    },
+    {
+      "test": "Update Patient Profile",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:25.007288"
+    },
+    {
+      "test": "Get Doctors List",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:25.052696"
+    },
+    {
+      "test": "Send Message to Doctor",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:25.099415"
+    },
+    {
+      "test": "Get Doctor Messages",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:25.136053"
+    },
+    {
+      "test": "AI Chat Message",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:45.226386"
+    },
+    {
+      "test": "AI Chat Response Structure",
+      "success": true,
+      "details": "Both user and AI messages present",
+      "timestamp": "2026-01-22T21:36:45.227058"
+    },
+    {
+      "test": "Get AI Messages",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:36:45.281613"
+    },
+    {
+      "test": "Generate Health Recommendations",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:37:00.959778"
+    },
+    {
+      "test": "Get Recommendations",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:37:01.032675"
+    },
+    {
+      "test": "Upload Document",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:37:01.075558"
+    },
+    {
+      "test": "Get Documents List",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:37:01.112278"
+    },
+    {
+      "test": "Doctor Get Patients",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:37:01.159584"
+    },
+    {
+      "test": "Delete Patient Account",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2026-01-22T21:37:01.198026"
+    }
+  ],
+  "timestamp": "2026-01-22T21:37:01.198995"
+}

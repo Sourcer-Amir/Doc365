@@ -1,0 +1,155 @@
+{
+  "identity": {
+    "persona": "E1: The Anti-AI Designer",
+    "mission": "Create a healthcare platform that feels like a wellness retreat, not a hospital. Warm, organic, and deeply human.",
+    "principles": [
+      "Fusion over Imitation: Mix medical precision with botanical warmth.",
+      "Emotion First: Every screen should feel 'safe' and 'caring'.",
+      "Content is King: Data must be legible but not clinical.",
+      "Negative Space: Let the user breathe."
+    ]
+  },
+  "typography": {
+    "fonts": {
+      "heading": {
+        "name": "Manrope",
+        "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap",
+        "usage": "Use for all Headings (h1-h6). Weights: 600/800 for impact, 300 for elegance."
+      },
+      "body": {
+        "name": "DM Sans",
+        "url": "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap",
+        "usage": "Use for all body text, inputs, and data tables. High legibility."
+      }
+    },
+    "rules": [
+      "Headings > 32px must use tracking-tight.",
+      "Overlines must be uppercase + tracking-widest + text-xs.",
+      "Never use Inter for headings."
+    ]
+  },
+  "colors": {
+    "palette_name": "Organic & Earthy (Archetype 1)",
+    "theme": "light",
+    "variables": {
+      "background": "30 20% 98%", 
+      "foreground": "150 5% 15%",
+      "card": "0 0% 100%",
+      "card-foreground": "150 5% 15%",
+      "popover": "0 0% 100%",
+      "popover-foreground": "150 5% 15%",
+      "primary": "146 35% 25%",
+      "primary-foreground": "30 20% 98%",
+      "secondary": "30 30% 94%",
+      "secondary-foreground": "146 35% 25%",
+      "muted": "30 20% 96%",
+      "muted-foreground": "150 5% 45%",
+      "accent": "14 60% 65%",
+      "accent-foreground": "0 0% 100%",
+      "destructive": "0 84.2% 60.2%",
+      "destructive-foreground": "0 0% 98%",
+      "border": "30 10% 90%",
+      "input": "30 10% 90%",
+      "ring": "146 35% 25%",
+      "radius": "1rem"
+    },
+    "usage_notes": [
+      "Background is NOT pure white. It is a very pale warm bone/sand color.",
+      "Primary is a Deep Forest Green, not 'Medical Blue'.",
+      "Accent is Terracotta/Clay for warmth.",
+      "Use glassmorphism for sticky headers: bg-white/70 backdrop-blur-xl."
+    ]
+  },
+  "layout": {
+    "spacing": {
+      "scale": "Generous. Use p-6 or p-8 where others use p-4.",
+      "containers": "Containers with borders MUST have internal padding (p-6 or p-8)."
+    },
+    "grid_system": {
+      "marketing": "Mode A (Tetris): Asymmetric grid. 12 cols. Mix col-span-8 (Hero) with col-span-4 (Detail).",
+      "dashboard": "Mode B (Bento): High density. 4 cols. Use col-span-2 row-span-2 for main charts."
+    },
+    "border_radius": {
+      "default": "rounded-2xl",
+      "buttons": "rounded-full (Pill shape)",
+      "cards": "rounded-2xl"
+    }
+  },
+  "components": {
+    "buttons": {
+      "style": "Pill shaped. Primary: Deep Green. Secondary: Warm Sand.",
+      "interaction": "Hover: scale-105 transition-transform duration-200."
+    },
+    "cards": {
+      "style": "Flat with subtle border (border-stone-200) OR Soft Shadow (shadow-lg shadow-stone-200/50).",
+      "hover": "Hover: -translate-y-1 transition-transform duration-300."
+    },
+    "inputs": {
+      "style": "rounded-xl border-stone-200 bg-white/50 focus:ring-2 focus:ring-primary/20."
+    },
+    "navigation": {
+      "style": "Floating glassmorphic header. Rounded-full container for menu items."
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "Use for overlays and sticky navs: bg-white/60 backdrop-blur-xl border border-white/40.",
+    "gradients": "NO full screen gradients. Use subtle mesh gradients in backgrounds (e.g., pale sage to warm beige).",
+    "textures": "Add subtle noise texture to the background to kill digital flatness."
+  },
+  "images": {
+    "doctor_portraits": [
+      {
+        "url": "https://images.unsplash.com/photo-1645066928295-2506defde470?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Friendly male doctor in white coat",
+        "category": "doctor_profile"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1523446619710-112ccba40f35?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Female doctor/nutritionist with apple",
+        "category": "doctor_profile"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1642975967602-653d378f3b5b?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Professional male doctor",
+        "category": "doctor_profile"
+      }
+    ],
+    "lifestyle": [
+      {
+        "url": "https://images.unsplash.com/photo-1546029029-75c0ba113405?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Man enjoying healthy drink",
+        "category": "patient_lifestyle"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1628423499047-8c6a000def16?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Woman relaxing on grass",
+        "category": "patient_lifestyle"
+      }
+    ],
+    "abstract": [
+      {
+        "url": "https://images.unsplash.com/photo-1761807633470-8c57d3c54404?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Warm hazy abstract light",
+        "category": "background_texture"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1762652345565-e38e420b6f30?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Soft pastel organic shapes",
+        "category": "ai_avatar_bg"
+      }
+    ]
+  },
+  "universal_guidelines": [
+    "DO NOT use 'Inter' font for headings.",
+    "DO NOT use generic 'hospital blue' (#007AFF) as primary.",
+    "DO NOT center text by default. Left align for readability.",
+    "DO NOT use 'transition: all'. Animate specific properties.",
+    "ALWAYS use 'data-testid' on interactive elements.",
+    "ALWAYS use 'sonner' for toasts.",
+    "ALWAYS use 'lucide-react' for icons.",
+    "Ensure contrast ratios meet WCAG AA (4.5:1 for normal text).",
+    "Use 'rounded-xl' or 'rounded-2xl' for a friendly feel.",
+    "Add 'backdrop-blur' to floating elements."
+  ],
+  "instructions_to_main_agent": "You are building a 'Modern & Friendly' healthcare app. The vibe is 'Wellness Retreat' meets 'High-Tech Medical'. Use the provided color variables in your global CSS. Use the image URLs provided for placeholders. Follow the 'Bento' grid for the dashboard. Prioritize warmth and accessibility."
+}
