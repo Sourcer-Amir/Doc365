@@ -350,7 +350,7 @@ export default function DoctorDashboard({ user, onLogout }) {
                 <UsersRound className="w-4 h-4 mr-2" />
                 Chat con doctores
               </Button>
-              <Button variant="outline" className="rounded-full" onClick={() => navigate('/calendar')}>
+              <Button variant="outline" className="rounded-full" onClick={() => navigate('/consultations')}>
                 <CalendarDays className="w-4 h-4 mr-2" />
                 Ver calendario
               </Button>

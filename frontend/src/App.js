@@ -131,11 +131,12 @@ function App() {
               <DoctorNetwork user={user} onLogout={handleLogout} />
             </ProtectedRoute>
           } />
-          <Route path="/calendar" element={
+          <Route path="/consultations" element={
             <ProtectedRoute user={user}>
               <AppointmentsCalendar user={user} onLogout={handleLogout} />
             </ProtectedRoute>
           } />
+          <Route path="/calendar" element={<Navigate to="/consultations" replace />} />
           <Route path="/recommendations" element={
             <ProtectedRoute user={user} requiredRole="patient">
               <Recommendations user={user} onLogout={handleLogout} />
