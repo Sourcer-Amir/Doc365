@@ -73,7 +73,7 @@ export default function Navigation({ user, onLogout }) {
             className="flex items-center gap-2 rounded-full px-2 py-1 transition-colors hover:bg-primary/10"
           >
             <BrandLogo size={24} />
-            <span className="font-heading text-lg font-bold">Sana</span>
+            <span className="font-heading text-lg font-bold">Doctor365</span>
           </button>
         </div>
 

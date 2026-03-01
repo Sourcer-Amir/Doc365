@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.routes import auth, profiles, users, chat, recommendations, documents, verification, doctor, telegram
+from app.api.routes import auth, profiles, users, chat, recommendations, documents, verification, doctor, telegram, video
 
 api_router = APIRouter()
 
@@ -13,3 +13,4 @@ api_router.include_router(documents.router, tags=["documents"])
 api_router.include_router(verification.router, tags=["verification"])
 api_router.include_router(doctor.router, tags=["doctor"])
 api_router.include_router(telegram.router, tags=["telegram"])
+api_router.include_router(video.router, tags=["video"])

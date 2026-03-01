@@ -11,7 +11,7 @@ import axios from 'axios';
 import { Plus, X } from 'lucide-react';
 import BrandLogo from '@/components/BrandLogo';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://sanarios-backend-api.onrender.com";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 const API = `${BACKEND_URL}/api`;
 const DEFAULT_DOCTOR_LANGUAGE = { language: 'Español', level: 'avanzado' };
 
@@ -199,7 +199,7 @@ export default function Auth({ onLogin, onClose }) {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary mb-4">
             <BrandLogo size={32} iconClassName="text-primary-foreground" />
           </div>
-          <h1 className="text-4xl font-bold font-heading text-foreground mb-2">Sana</h1>
+          <h1 className="text-4xl font-bold font-heading text-foreground mb-2">Doctor365</h1>
           <p className="text-muted-foreground">Tu salud, nuestra prioridad</p>
         </div>
 

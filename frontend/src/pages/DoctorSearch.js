@@ -14,7 +14,7 @@ import axios from 'axios';
 import { Search, Users, Eye, MessageSquare, CheckCircle, Stethoscope, Clock, MapPin, Phone, Mail, Star, FileCheck2, Flag } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://sanarios-backend-api.onrender.com";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 const API = `${BACKEND_URL}/api`;
 
 export default function DoctorSearch({ user, onLogout }) {

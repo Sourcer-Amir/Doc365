@@ -14,7 +14,7 @@ class Settings(BaseSettings):
         case_sensitive=True,
     )
 
-    APP_NAME: str = "Sanarios API"
+    APP_NAME: str = "Doctor365 API"
     API_PREFIX: str = "/api"
     ENVIRONMENT: str = "development"
 
@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_DAYS: int = 7
 
-    CORS_ORIGINS: str = "https://sanarios.com,https://www.sanarios.com,https://sanarios.vercel.app,http://localhost:3000"
+    CORS_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000,https://sanarios.com,https://www.sanarios.com,https://sanarios.vercel.app"
 
     AI_PROVIDER: str = "groq"  # litellm | groq
     AI_MODEL: str = "llama-3.3-70b-versatile"
@@ -56,7 +56,15 @@ class Settings(BaseSettings):
     TELEGRAM_ADMIN_CHAT_ID: Optional[str] = None
     TELEGRAM_WEBHOOK_SECRET: Optional[str] = None
     TELEGRAM_LINK_TOKEN_TTL_MINUTES: int = 15
-    APP_BASE_URL: Optional[str] = "https://sanarios.com"
+    APP_BASE_URL: Optional[str] = "http://localhost:3000"
+
+    AGORA_APP_ID: Optional[str] = None
+    AGORA_APP_CERTIFICATE: Optional[str] = None
+    AGORA_TEMP_TOKEN: Optional[str] = Field(
+        default=None,
+        validation_alias=AliasChoices("AGORA_TEMP_TOKEN", "AGORA_TOKEN"),
+    )
+    AGORA_TOKEN_EXPIRY_SECONDS: int = 3600
 
     @field_validator("DATABASE_URL", mode="before")
     @classmethod

@@ -7,26 +7,26 @@
 
 @layer base {
   :root {
-    --background: 30 20% 98%;
-    --foreground: 150 5% 15%;
+    --background: 210 40% 98%;
+    --foreground: 218 33% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 150 5% 15%;
+    --card-foreground: 218 33% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 150 5% 15%;
-    --primary: 146 35% 25%;
-    --primary-foreground: 30 20% 98%;
-    --secondary: 30 30% 94%;
-    --secondary-foreground: 146 35% 25%;
-    --muted: 30 20% 96%;
-    --muted-foreground: 150 5% 45%;
-    --accent: 14 60% 65%;
+    --popover-foreground: 218 33% 15%;
+    --primary: 217 91% 56%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 95%;
+    --secondary-foreground: 217 66% 28%;
+    --muted: 210 33% 96%;
+    --muted-foreground: 217 15% 45%;
+    --accent: 187 60% 44%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 30 10% 90%;
-    --input: 30 10% 90%;
-    --ring: 146 35% 25%;
-    --radius: 1rem;
+    --border: 214 32% 89%;
+    --input: 214 32% 89%;
+    --ring: 217 91% 56%;
+    --radius: 1.25rem;
   }
 }
 
@@ -37,6 +37,11 @@
   body {
     @apply bg-background text-foreground font-body;
     font-family: 'DM Sans', sans-serif;
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.1), transparent 28%),
+      radial-gradient(circle at 90% 15%, rgba(20, 184, 166, 0.08), transparent 24%),
+      linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(240, 247, 255, 0.98));
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Manrope', sans-serif;
@@ -49,5 +54,17 @@
   }
   .font-body {
     font-family: 'DM Sans', sans-serif;
+  }
+  .medical-dot-grid {
+    background-image:
+      radial-gradient(circle, rgba(59, 130, 246, 0.16) 1.2px, transparent 1.2px);
+    background-size: 18px 18px;
+  }
+  .medical-panel {
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(241, 247, 255, 0.92));
+    box-shadow:
+      0 24px 60px rgba(38, 84, 124, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 }

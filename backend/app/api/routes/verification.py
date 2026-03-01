@@ -46,14 +46,14 @@ async def _notify_review_result(
     reason: str | None,
 ) -> None:
     if approved:
-        subject = "Sanarios - Verificación profesional aprobada"
+        subject = "Doctor365 - Verificación profesional aprobada"
         body = (
             f"Hola {doctor.full_name},\n\n"
             "La revisión automática de tus credenciales fue aprobada."
         )
-        telegram_text = "Sanarios: tus credenciales médicas fueron aprobadas."
+        telegram_text = "Doctor365: tus credenciales médicas fueron aprobadas."
     else:
-        subject = "Sanarios - Verificación profesional rechazada"
+        subject = "Doctor365 - Verificación profesional rechazada"
         body = (
             f"Hola {doctor.full_name},\n\n"
             "La revisión automática de tus credenciales fue rechazada.\n"
@@ -61,7 +61,7 @@ async def _notify_review_result(
             "Sube un documento más claro o una credencial oficial válida."
         )
         telegram_text = (
-            "Sanarios: tus credenciales médicas fueron rechazadas. "
+            "Doctor365: tus credenciales médicas fueron rechazadas. "
             f"Motivo: {reason or 'No especificado'}"
         )
 

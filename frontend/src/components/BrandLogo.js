@@ -7,7 +7,7 @@ export default function BrandLogo({
   size = 24,
   imgClassName = '',
   iconClassName = 'text-primary',
-  alt = 'Sana logo',
+  alt = 'Doctor365 logo',
 }) {
   const [loadFailed, setLoadFailed] = useState(false);
 

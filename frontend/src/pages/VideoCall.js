@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { toast } from 'sonner';
 import Navigation from '@/components/Navigation';
 import { Badge } from '@/components/ui/badge';
@@ -22,6 +23,9 @@ import {
   loadStoredAgoraConfig,
   saveAgoraConfig,
 } from '@/lib/agoraRtc';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+const API = `${BACKEND_URL}/api`;
 
 function formatDuration(seconds) {
   const minutes = Math.floor(seconds / 60);
@@ -61,6 +65,7 @@ export default function VideoCall({ user, onLogout }) {
     initialAgoraConfig.appId ? 'Listo para conectar' : 'Configura Agora para iniciar'
   );
   const [remoteUsers, setRemoteUsers] = useState([]);
+  const [loadingSession, setLoadingSession] = useState(false);
   const [micOn, setMicOn] = useState(true);
   const [cameraOn, setCameraOn] = useState(true);
   const [screenSharing, setScreenSharing] = useState(false);
@@ -105,6 +110,72 @@ export default function VideoCall({ user, onLogout }) {
       void cleanupCall({ nextState: null });
     };
   }, []);
+
+  const requestAgoraSession = useCallback(
+    async (requestedChannel, { notifyOnError = false } = {}) => {
+      const authToken = localStorage.getItem('token');
+      if (!authToken) {
+        return null;
+      }
+
+      const channel = (requestedChannel || initialAgoraConfig.channel || '').trim();
+      if (!channel) {
+        return null;
+      }
+
+      setLoadingSession(true);
+
+      try {
+        const response = await axios.get(`${API}/video/agora/config`, {
+          params: {
+            channel,
+            peer_id: callPeer?.id || '',
+          },
+          headers: { Authorization: `Bearer ${authToken}` },
+        });
+
+        const payload = response.data || {};
+        const nextConfig = {
+          appId: payload.app_id || '',
+          token: payload.token || '',
+          channel: payload.channel || channel,
+        };
+        const backendConfigured = Boolean(payload.configured);
+
+        setAgoraConfig((previous) => ({
+          ...previous,
+          channel: nextConfig.channel || previous.channel,
+          appId: backendConfigured ? nextConfig.appId || previous.appId : previous.appId,
+          token: backendConfigured ? nextConfig.token : previous.token,
+        }));
+        setStatusMessage(
+          payload.message ||
+            (backendConfigured
+              ? 'Credenciales de Agora cargadas desde el backend local'
+              : 'Configura Agora en el backend local')
+        );
+
+        return {
+          ...nextConfig,
+          configured: backendConfigured,
+          tokenRequired: Boolean(payload.token_required),
+        };
+      } catch (error) {
+        console.error('Agora session error:', error);
+        if (notifyOnError) {
+          toast.error('No se pudieron cargar las credenciales de Agora desde tu backend local');
+        }
+        return null;
+      } finally {
+        setLoadingSession(false);
+      }
+    },
+    [callPeer?.id, initialAgoraConfig.channel]
+  );
+
+  useEffect(() => {
+    void requestAgoraSession(initialAgoraConfig.channel);
+  }, [initialAgoraConfig.channel, requestAgoraSession]);
 
   const syncRemoteUsers = () => {
     const client = clientRef.current;
@@ -206,12 +277,27 @@ export default function VideoCall({ user, onLogout }) {
       return;
     }
 
-    const appId = agoraConfig.appId.trim();
-    const channel = agoraConfig.channel.trim();
-    const token = agoraConfig.token.trim();
+    let runtimeConfig = {
+      appId: agoraConfig.appId.trim(),
+      channel: agoraConfig.channel.trim(),
+      token: agoraConfig.token.trim(),
+    };
+
+    const backendSession = await requestAgoraSession(runtimeConfig.channel);
+    if (backendSession?.configured) {
+      runtimeConfig = {
+        appId: backendSession.appId || runtimeConfig.appId,
+        channel: backendSession.channel || runtimeConfig.channel,
+        token: backendSession.token,
+      };
+    }
+
+    const appId = runtimeConfig.appId.trim();
+    const channel = runtimeConfig.channel.trim();
+    const token = runtimeConfig.token.trim();
 
     if (!appId) {
-      toast.error('Agrega tu App ID de Agora antes de conectarte');
+      toast.error('Configura AGORA_APP_ID en tu backend local o pega tu App ID manualmente');
       return;
     }
 
@@ -250,6 +336,7 @@ export default function VideoCall({ user, onLogout }) {
 
       await client.publish([audioTrack, cameraTrack]);
 
+      setAgoraConfig(runtimeConfig);
       saveAgoraConfig({ appId, token });
       setRemoteUsers([...client.remoteUsers]);
       setMicOn(true);
@@ -531,10 +618,20 @@ export default function VideoCall({ user, onLogout }) {
                   <CardTitle className="text-lg font-heading">Configurar Agora</CardTitle>
                 </div>
                 <CardDescription>
-                  Puedes usar variables de entorno o pegar aquí tu App ID y token temporal.
+                  Carga automatica desde tu backend local, con edicion manual como respaldo.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full rounded-full"
+                  onClick={() => requestAgoraSession(agoraConfig.channel, { notifyOnError: true })}
+                  disabled={loadingSession || isBusy}
+                >
+                  {loadingSession ? 'Leyendo backend local...' : 'Recargar desde backend local'}
+                </Button>
+
                 <div>
                   <label className="mb-2 block text-sm font-medium">App ID</label>
                   <Input
@@ -566,14 +663,14 @@ export default function VideoCall({ user, onLogout }) {
                     onChange={(event) =>
                       setAgoraConfig((previous) => ({ ...previous, channel: event.target.value }))
                     }
-                    placeholder="sana-consulta"
+                    placeholder="doctor365-consulta"
                     disabled={isConnected || isBusy}
                   />
                 </div>
 
                 <p className="text-xs text-muted-foreground">
-                  Si compartes este mismo canal con la otra persona y ambos usan credenciales válidas,
-                  el video y audio se transmiten en tiempo real.
+                  Si ambos usan este mismo canal, Doctor365 intentara tomar App ID y token del backend
+                  local antes de conectarse a Agora.
                 </p>
               </CardContent>
             </Card>

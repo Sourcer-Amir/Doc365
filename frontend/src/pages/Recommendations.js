@@ -8,7 +8,7 @@ import axios from 'axios';
 import { Lightbulb, RefreshCw, TrendingUp, Heart, Activity, Pill, Apple, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://sanarios-backend-api.onrender.com";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 const API = `${BACKEND_URL}/api`;
 
 const categoryIcons = {

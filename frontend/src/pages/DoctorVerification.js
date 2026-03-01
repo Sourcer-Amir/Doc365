@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 import axios from 'axios';
 import { Upload, CheckCircle, Clock, AlertCircle, FileText } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://sanarios-backend-api.onrender.com";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 const API = `${BACKEND_URL}/api`;
 
 export default function DoctorVerification({ user, onLogout }) {

@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import axios from 'axios';
 import { FileText, Upload, Download } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://sanarios-backend-api.onrender.com";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 const API = `${BACKEND_URL}/api`;
 
 export default function Documents({ user, onLogout }) {

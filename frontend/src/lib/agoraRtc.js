@@ -97,5 +97,5 @@ export function buildDefaultAgoraChannel({ user, callPeer }) {
     .sort();
 
   const base = parts.length > 0 ? parts.join('-') : 'general';
-  return `sana-${base}`.slice(0, 64);
+  return `doctor365-${base}`.slice(0, 64);
 }

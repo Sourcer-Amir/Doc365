@@ -58,7 +58,7 @@ async def telegram_webhook(
         await send_telegram_message(
             chat_id=chat_id_str,
             text=(
-                "Abre el boton de Telegram desde tu perfil de Sanarios para conectar "
+                "Abre el boton de Telegram desde tu perfil de Doctor365 para conectar "
                 "las notificaciones automaticamente."
             ),
         )
@@ -68,7 +68,7 @@ async def telegram_webhook(
     if not user_id:
         await send_telegram_message(
             chat_id=chat_id_str,
-            text="El enlace de conexion es invalido o ya vencio. Vuelve a generarlo desde Sanarios.",
+            text="El enlace de conexion es invalido o ya vencio. Vuelve a generarlo desde Doctor365.",
         )
         return {"ok": True}
 
@@ -82,6 +82,6 @@ async def telegram_webhook(
 
     await send_telegram_message(
         chat_id=chat_id_str,
-        text="Notificaciones de Sanarios activadas correctamente para tu cuenta.",
+        text="Notificaciones de Doctor365 activadas correctamente para tu cuenta.",
     )
     return {"ok": True}
